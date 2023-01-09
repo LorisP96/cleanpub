@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+<custom-type type-id="contactAuthor">
+    <display-name xml:lang="x-default">contactAuthor</display-name>
+    <description xml:lang="x-default">Data Saved on contactAuthor</description>
+    <staging-mode>no-staging</staging-mode>
+    <storage-scope>site</storage-scope>
+    <retention-days>365</retention-days>
+    <key-definition attribute-id="id">
+        <type>string</type>
+        <mandatory-flag>true</mandatory-flag>
+        <min-length>0</min-length>
+    </key-definition>
+    <key-definition attribute-id="email">
+        <type>string</type>
+        <mandatory-flag>true</mandatory-flag>
+        <min-length>0</min-length>
+    </key-definition>
+    <key-definition attribute-id="message">
+        <type>string</type>
+        <mandatory-flag>true</mandatory-flag>
+        <min-length>0</min-length>
+    </key-definition>
+    <group-definitions>
+        <attribute-group group-id="general">
+            <display-name xml:lang="x-default">General</display-name>
+            <attribute attribute-id="email"/>
+        </attribute-group>
+    </group-definitions>
+</custom-type>
+</metadata>
