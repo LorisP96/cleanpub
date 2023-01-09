@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-body">
                         <form action="${pdict.actionUrl}" class="contact-us" method="POST" name="contact-us">
-                            <!--- contact us first name, last name --->
+                            <!--- contact us first name, last name -->
                             <div class="row contact-us-name">
                                 <div class="col-sm-6">
                                     <div class="form-group required">
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
 
-                            <!--- contact us email --->
+                            <!--- contact us email -->
                             <div class="row contact-us-email">
                                 <div class="col">
                                     <div class="form-group required">
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
 
-                            <!--- contact us topic --->
+                            <!--- contact us topic -->
                             <div class="row contact-us-topic">
                                 <div class="col">
                                     <div class="form-group">
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
 
-                            <!--- contact us comment --->
+                            <!--- contact us comment -->
                             <div class="row contact-us-comment">
                                 <div class="col">
                                     <div class="form-group">
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
 
-                            <!--- contact us submit --->
+                            <!--- contact us submit -->
                             <div class="row contact-us-submnit">
                                 <div class="col-sm-6">
                                 </div>

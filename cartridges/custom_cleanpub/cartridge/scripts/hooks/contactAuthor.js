@@ -13,10 +13,11 @@ function contactAuthor(contactDetails) {
     var content = contactDetails[message];
 
     //creiamo una nuova mail e settiamo gli elementi addTo setFrom setSubject e setContent, infine inviamo la mail
-    var mail = new Mail();
-    mail.addTo(contactDetails[email]);
-    mail.setFrom("noreply@cleanpub.online");
-    mail.setSubject("CLEANPUB SITE CONTACT FORM");
+    // var mail = new Mail();
+    // mail.addTo(contactDetails[email]);
+    // mail.setFrom();
+    // mail.setSubject("CLEANPUB SITE CONTACT FORM");
+    // SETTARE DINAMICAMENTE L'EMAIL DI DESTINAZIONE PRENDENDOLA DAL AUTHOR CUSTOM OBJ 
 
     mail.setContent(content);
     mail.send();

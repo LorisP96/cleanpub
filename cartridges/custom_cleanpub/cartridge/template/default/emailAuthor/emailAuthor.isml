@@ -1,0 +1,260 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addJs('/js/emailAuthor.js');
+        <!-- assets.addCss('/css/contactUs.css'); -->
+    </isscript>
+
+    <div class="hero slant-down contact-us-banner">
+        <h1 class="page-title">${Resource.msg('title.contact.us.page', 'contactUs', null)}</h1>
+    </div>
+
+    <form novalidate="novalidate" class="simple_form form new_message_to_author" id="new_message_to_author" action="/the-easiest-way-to-become-a-software-developer/email_author" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="G0BX0bp6smF08Mx0YMABgCmEKDIJEoJfBuAmaLnNTnSneIq8s/DQXHI1RYnM+L0VBT5CQCPR1/Gky+HOFm2ZKQ==" /><div class="control-group string optional message_to_author_replyto"><label class="string optional control-group__label" for="message_to_author_replyto">Your email address</label><div class="control-group__control"><input class="string optional control-group__input" type="text" name="message_to_author[replyto]" id="message_to_author_replyto" /></div><p class="hint">Please include an email address so the author can respond to your query</p></div>
+<div class="control-group text required message_to_author_content"><label class="text required control-group__label" for="message_to_author_content"><abbr title="required">*</abbr> Type your message to the author below</label><div class="control-group__control"><textarea rows="10" class="text required control-group__input" name="message_to_author[content]" id="message_to_author_content">
+</textarea></div><p class="hint">This message will be sent to Fiodar Sazanavets</p></div>
+<input type="hidden" name="message_to_author[honey]" id="message_to_author_honey" />
+<div>
+  <p class='hint'>
+    This site is protected by reCAPTCHA and the Google&nbsp;
+    <a rel='noopener noreferrer' target='_blank' href="https://policies.google.com/privacy">Privacy Policy</a> and&nbsp;
+    <a rel='noopener noreferrer' href="https://policies.google.com/terms">Terms of Service</a> apply.
+  </p>
+  <script src="https://www.recaptcha.net/recaptcha/api.js?render=6LdDCakUAAAAAEFI0Kyx_gg9t-G4r1mOWrIwFLd0"   ></script>
+        <script>
+          // Define function so that we can call it again later if we need to reset it
+          // This executes reCAPTCHA and then calls our callback.
+          function executeRecaptchaForEmailAuthors() {
+            grecaptcha.ready(function() {
+              grecaptcha.execute('6LdDCakUAAAAAEFI0Kyx_gg9t-G4r1mOWrIwFLd0', {action: 'email_authors'}).then(function(token) {
+                setInputWithRecaptchaResponseTokenForEmailAuthors('g-recaptcha-response-data-email-authors', token)
+              });
+            });
+          };
+          // Invoke immediately
+          executeRecaptchaForEmailAuthors()
+
+          // Async variant so you can await this function from another async function (no need for
+          // an explicit callback function then!)
+          // Returns a Promise that resolves with the response token.
+          async function executeRecaptchaForEmailAuthorsAsync() {
+            return new Promise((resolve, reject) => {
+             grecaptcha.ready(async function() {
+                resolve(await grecaptcha.execute('6LdDCakUAAAAAEFI0Kyx_gg9t-G4r1mOWrIwFLd0', {action: 'email_authors'}))
+              });
+            })
+          };
+
+                    var setInputWithRecaptchaResponseTokenForEmailAuthors = function(id, token) {
+            var element = document.getElementById(id);
+            element.value = token;
+          }
+
+        </script>
+<input type="hidden" name="g-recaptcha-response-data[email_authors]" id="g-recaptcha-response-data-email-authors" data-sitekey="6LdDCakUAAAAAEFI0Kyx_gg9t-G4r1mOWrIwFLd0" class="g-recaptcha g-recaptcha-response "/>
+
+</div>
+<button href="${URLUtils.url('emailAuthor-post')}"></button>
+</form>
+</div>
+<div class='sidebar'>
+<div class='book-sidebar'>
+
+    <h3>About the Book</h3>
+    <p>From the best-selling author of "The battle hardened developer" comes a book that will teach you how to get your first job as a software developer, even if you are completely self-taught and don't have any formal IT-related qualifications. However, this book will be useful to computer science graduates too, as there are many important aspects of the IT industry that they don't teach in school.</p><p>This book pulls no punches. It tells the truth about the software development industry, even when it's sometimes uncomfortable. At the same time, it's not a technical book and it uses as little technical jargon as possible.</p><p>In this book, you will learn the following:</p><ul><li>How to find out if the software development career is suitable for you</li><li>Why software developers are paid well and why it's unlikely to change in the future</li><li>What you need to study to become a software developer and what things you can ignore</li><li>How to choose your first programming language to study</li><li>How to deal with recruiters and what to watch out for</li><li>How to get your first software development job without formal IT qualifications</li><li>and much more</li></ul><p>By the end of this book, you will be equipped with sufficient knowledge to enter the industry, if you still decide to do so.</p>
+
+    <br />
+  <h3>About the Author</h3>
+  <section class='author-profile meta' itemprop='author' itemscope='' itemtype='http://schema.org/Person'>
+<div class='avatar--small'>
+<a href="/u/fsazanavets"><img alt="Fiodar Sazanavets’s avatar" itemprop="image" class="avatar__image" src="https://d39qdlcrvnra4b.cloudfront.net/avatars/1539066/small/Photo_2022.jpg?1651165661" width="100" height="100" />
+<span class='bold' itemprop='name'>
+<a itemprop="name" rel="author" href="https://leanpub.com/u/fsazanavets">Fiodar Sazanavets</a>
+</span>
+</a></div>
+<br>
+<p class='twitter-link'>
+<a target="_blank" href="https://twitter.com/FSazanavets">@FSazanavets</a>
+</p>
+<p class='google-plus-link hidden'>
+
+</p>
+<div class='profile-blurb' itemprop='description'>
+<p>Fiodar Sazanavets is an experienced lead software engineer whose main areas of expertise are C# and .NET. Fiodar is familiar with industry-wide best practices, such as SOLID principles, software design patterns, automation testing principles (BDD and TDD), and microservices architecture.</p><p>Fiodar has built his software engineering experience while working in a variety of industries, including water engineering, financial, retail, railway, and defense. He has played a leading role in various projects and, as well as writing software, he gained substantial experience in architecture and design.</p><p>Fiodar is an author of a number of technical books and online courses. He regularly writes about software development on his personal website, <a href="https://scientificprogrammer.net" target="_blank" rel="nofollow">https://scientificprogrammer.net</a>. He is also available to book for personal mentoring sessions via <a href="https://mentorcruise.com/mentor/fiodarsazanavets" target="_blank" rel="nofollow">https://mentorcruise.com/mentor/fiodarsazanavets</a>.</p>
+</div>
+</section>
+
+  <meta itemprop="publisher" content="Leanpub">
+</div>
+
+</div>
+</div>
+
+</div>
+<footer class='footer'>
+<div class='container--small'>
+<h1 class='footer-logo'>
+<a href="https://leanpub.com/"><img src="https://d3g6anj9jkury9.cloudfront.net/assets/logos/logo-white-96-67-2x-9bfee74570449b60febfe179fb06c1eb.png" alt="Logo white 96 67 2x" />
+</a></h1>
+<h3 class='footer-slogan'>Publish Early, Publish Often</h3>
+<ul class='footer-list-break'>
+<li>
+<h5 class='footer-headings'>Path</h5>
+</li>
+<li class='footer-descriptions-top'>There are many paths, but the one you're on right now on Leanpub is:</li>
+<li class='path'>
+The-easiest-way-to-become-a-software-developer › Email Author › New
+</li>
+</ul>
+<div class='footer-links'>
+    <ul class='footer-list'>
+    <ul class='footer-columns'>
+    <li>
+    <h5 class='footer-headings'>READERS</h5>
+    </li>
+    </ul>
+    <ul class='footer-list-break'>
+    <li>
+    <h5 class='footer-list-title'>Newsletters</h5>
+    </li>
+    <li><a href="/newsletters">Weekly Sale</a></li>
+    <li><a href="/newsletters">Monthly Sale</a></li>
+    </ul>
+    <ul class='footer-list-break'>
+    <li>
+    <h5 class='footer-list-title'>Store</h5>
+    </li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/redeem">Redeem a Token</a></li>
+    <li><a href="/bookstore/book?search">Search</a></li>
+    </ul>
+    <ul class='footer-list-break'>
+    <li>
+    <h5 class='footer-list-title'>Support</h5>
+    </li>
+    <li><a href="http://help.leanpub.com/en/articles/3788293-the-leanpub-faq">Leanpub FAQ</a></li>
+    <li><a href="http://help.leanpub.com/en/articles/4405350-leanpub-author-faq">Leanpub Author FAQ</a></li>
+    <li><a href="http://help.leanpub.com/en/">Search our Help Center</a></li>
+    <li><a href="http://help.leanpub.com/en/articles/110768-if-i-can-t-find-an-answer-to-my-question-in-this-help-center-what-should-i-do">How to Contact Us</a></li>
+    </ul>
+    <ul class='footer-list-break'>
+    <li>
+    <h5 class='footer-headings'>FRONTMATTER PODCAST</h5>
+    </li>
+    <li><a href="/podcasts/featured">Featured Episode</a></li>
+    <li><a href="/podcasts/frontmatter">Episode List</a></li>
+    </ul>
+    <ul class='footer-list-break'>
+    <li>
+    <h5 class='footer-headings'>COMPANY</h5>
+    </li>
+    <li>
+    <h5 class='footer-list-title'>About</h5>
+    </li>
+    <li><a href="/about">About Leanpub</a></li>
+    <li><a href="https://medium.com/@leanpub">Blog</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/press">Press</a></li>
+    </ul>
+    <ul class='footer-list-break'>
+    <li>
+    <h5 class='footer-list-title'>Essays</h5>
+    </li>
+    <li><a href="/imagine_a_world">Imagine a world...</a></li>
+    <li><a href="/manifesto">Manifesto</a></li>
+    <li><a href="/covid19">COVID-19</a></li>
+    </ul>
+    <ul class='footer-list-break'>
+        <li>
+            <h5 class='footer-list-title'>More</h5>
+        </li>
+        <li><a href="/causes">Causes</a></li>
+        <li><a href="/accessibility">Accessibility</a></li>
+    </ul>
+    </ul>
+    <ul class='footer-list'>
+    <ul class='footer-columns'>
+        <li>
+            <h5 class='footer-headings'>MEMBERSHIPS</h5>
+        </li>
+    </ul>
+    <ul class='footer-list-break'>
+        <li><a href="/reader_memberships">Reader Memberships</a></li>
+        <li><a href="/author_memberships">Author Memberships</a></li>
+        <li><a href="/membership">Your Membership</a></li>
+    </ul>
+    <ul class='footer-columns'>
+        <li>
+            <h5 class='footer-headings'>AUTHORS</h5>
+        </li>
+    </ul>
+    <ul class='footer-list-break'>
+        <li>
+            <h5 class='footer-list-title'>Write and Publish on Leanpub</h5>
+        </li>
+        <li><a href="/create/book">Create a Book</a></li>
+        <li><a href="/create/course">Create a Course</a></li>
+        <li><a href="/course_set_admin/leanpub/course_sets/new">Create a Track</a></li>
+        <li><a href="/testimonials">Testimonials</a></li>
+        <li><a href="/authors">Why Leanpub</a></li>
+    </ul>
+    <ul class='footer-list-break'>
+        <li>
+            <h5 class='footer-list-title'>Author Newsletter</h5>
+        </li>
+        <li><a href="/newsletters">The Leanpub Author Update</a></li>
+    </ul>
+    <ul class='footer-list-break'>
+        <li>
+            <h5 class='footer-list-title'>Author Support</h5>
+        </li>
+        <li><a href="http://help.leanpub.com/author-help">Author Help Center</a></li>
+        <li><a href="https://community.leanpub.com/c/authors">Leanpub Authors Forum</a></li>
+        <li><a href="https://leanpub.com/manual/read">The Leanpub Manual</a></li>
+        <li><a href="/help/supported_languages">Supported Languages</a></li>
+        <li><a href="https://leanpub.com/lfm/read">The LFM Manual</a></li>
+        <li><a href="https://leanpub.com/markua/read">Markua Manual</a></li>
+        <li><a href="/help/api">API Docs</a></li>
+    </ul>
+    <ul class='footer-list-break'>
+        <li>
+            <h5 class='footer-list-title'>Organizations</h5>
+        </li>
+        <li><a href="/organizations">Learn More</a></li>
+        <li><a href="/p/register">Sign Up</a></li>
+    </ul>
+    <ul class='footer-list-break'>
+            <li>
+                <h5 class='footer-headings'>LEGAL</h5>
+            </li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/takedown">Copyright Policy</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/refunds">Refund Policy</a></li>
+        </ul>
+    </ul>
+    </div>
+    <p class='footer-copyright'>
+        *&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;*
+    </p>
+    <p class='footer-copyright'>
+        Leanpub is copyright &copy; 2010-2023 <a href="http://ruboss.com">Ruboss Technology Corp.</a><br/>
+        All rights reserved.
+    </p>
+    <p class='footer-copyright'>
+        This site is protected by reCAPTCHA<br/>
+        and the Google&nbsp;
+        <a rel='noopener noreferrer' target='_blank' href="https://policies.google.com/privacy">Privacy Policy</a> and&nbsp;
+        <a rel='noopener noreferrer' target='_blank' href="https://policies.google.com/terms">Terms of Service</a> apply.
+    </p>
+</div>
+</footer>
+
+    <div id='react-modal'></div>
+
+    </div>
+    <div class='cookies-banner alert alert--info' style='display: none'>
+    Leanpub requires cookies in order to provide you the best experience.
+    <a class='dismiss link'>Dismiss</a>
+    </div>
+
+</isdecorate>
