@@ -12,12 +12,10 @@ function contactAuthor(contactDetails) {
     //Creare una stringa content prendendo gli elementi di contactDetails
     var content = contactDetails[message];
 
-    //creiamo una nuova mail e settiamo gli elementi addTo setFrom setSubject e setContent, infine inviamo la mail
-    // var mail = new Mail();
-    // mail.addTo(contactDetails[email]);
-    // mail.setFrom();
-    // mail.setSubject("CLEANPUB SITE CONTACT FORM");
-    // SETTARE DINAMICAMENTE L'EMAIL DI DESTINAZIONE PRENDENDOLA DAL AUTHOR CUSTOM OBJ 
+    var mail = new Mail();
+    mail.addTo(contactDetails.authorId);
+    mail.setFrom(contactDetails.contactEmail);
+    mail.setSubject("INFORMATION");
 
     mail.setContent(content);
     mail.send();

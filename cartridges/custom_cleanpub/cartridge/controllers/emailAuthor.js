@@ -7,7 +7,7 @@ server.get('new', server.middleware.https, function (req, res, next) {
     // prelevare authorid da query string
     res.render('emailAuthor/emailAuthor.isml', {
         actionUrl: URLUtils.url('emailAuthor').toString(),
-        // authorID: ...
+        authorId: authorId
     });
 
     next();
@@ -15,7 +15,7 @@ server.get('new', server.middleware.https, function (req, res, next) {
 
 server.post('post', server.middleware.https, function (req, res, next) {
     var Resource = require('dw/web/Resource');
-    var HookManager = require('dw/system/HookMgr');
+    var hooksHelper = require('*/cartridge/scripts/helpers/hooks');
     var emailHelper = require('*/cartridge/scripts/helpers/emailHelpers');
     var hook;
 
@@ -24,7 +24,7 @@ server.post('post', server.middleware.https, function (req, res, next) {
     if (isValidEmailid) {
         var contactDetails = [myForm.email, myForm.message];
         // hooksHelper('app.sendEmailToAuthor.contactAuthor', 'contactAuthor', contactDetails, function () {});
-        hook = HookManager.callHook('app.sendEmailToAuthor.contactAuthor', 'contactAuthor');
+        hooksHelper('app.sendEmailToAuthor.contactAuthor', 'contactAuthor', contactDetails, function () { });
 
         res.json({
             success: true,

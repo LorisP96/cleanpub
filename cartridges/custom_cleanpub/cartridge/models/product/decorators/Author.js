@@ -1,28 +1,26 @@
 'use strict';
 
-module.exports = function (object, apiProduct, type) {
-    Object.defineProperty(object, 'uuid', {
-        enumerable: true,
-        value: apiProduct.UUID
-    });
+var CustomObjectMgr = require('dw/object/CustomObjectMgr');
 
-    Object.defineProperty(object, 'id', {
-        enumerable: true,
-        value: apiProduct.ID
-    });
+function getAuthorEmail(product) {
+    var queryString = "custom.authorId LIKE '".concat(product.custom.authorId, "*'");
+    var searchQuery = CustomObjectMgr.queryCustomObjects('authorId', queryString, null);
+    var authorId = searchQuery.next();
+    searchQuery.close();
+    return authorId;
+}
 
-    Object.defineProperty(object, 'productName', {
+module.exports = function (object, product) {
+    Object.defineProperty(object, 'name', {
         enumerable: true,
-        value: apiProduct.name
+        value: product.custom.name
     });
-
-    Object.defineProperty(object, 'productType', {
+    Object.defineProperty(object, 'email', {
         enumerable: true,
-        value: type
+        value: product.custom.email
     });
-
-    Object.defineProperty(object, 'brand', {
+    Object.defineProperty(object, 'biography', {
         enumerable: true,
-        value: apiProduct.brand
+        value: product.custom.biography
     });
 };
