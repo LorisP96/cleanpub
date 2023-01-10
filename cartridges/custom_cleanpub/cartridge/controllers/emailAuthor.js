@@ -4,10 +4,9 @@ var server = require('server');
 
 server.get('new', server.middleware.https, function (req, res, next) {
     var URLUtils = require('dw/web/URLUtils');
-    // prelevare authorid da query string
     res.render('emailAuthor/emailAuthor.isml', {
         actionUrl: URLUtils.url('emailAuthor').toString(),
-        authorId: authorId
+        authorId: req.querystring.authorId
     });
 
     next();
@@ -22,9 +21,8 @@ server.post('post', server.middleware.https, function (req, res, next) {
     var myForm = req.form;
     var isValidEmailid = emailHelper.validateEmail(myForm.email);
     if (isValidEmailid) {
-        var contactDetails = [myForm.email, myForm.message];
-        // hooksHelper('app.sendEmailToAuthor.contactAuthor', 'contactAuthor', contactDetails, function () {});
-        hooksHelper('app.sendEmailToAuthor.contactAuthor', 'contactAuthor', contactDetails, function () { });
+        var contactDetails = [myForm.authorId, myForm.email, myForm.message];
+        HookMgr.callHook('app.sendEmailToAuthor.contactAuthor', 'contactAuthor', contactDetails, function () {});
 
         res.json({
             success: true,

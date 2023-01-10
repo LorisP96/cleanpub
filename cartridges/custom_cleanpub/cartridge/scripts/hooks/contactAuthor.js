@@ -13,7 +13,7 @@ function contactAuthor(contactDetails) {
     var content = contactDetails[message];
 
     var mail = new Mail();
-    mail.addTo(contactDetails.authorId);
+    mail.addTo(getAuthorEmail(authorId));
     mail.setFrom(contactDetails.contactEmail);
     mail.setSubject("INFORMATION");
 
@@ -21,6 +21,14 @@ function contactAuthor(contactDetails) {
     mail.send();
 
     return;
+}
+
+function getAuthorEmail(authorId) {
+    var queryString = "custom.authorId LIKE '".concat(authorId, "*'");
+    var searchQuery = CustomObjectMgr.queryCustomObjects('authorEmail', queryString, null);
+    var authorEmail = searchQuery.next();
+    searchQuery.close();
+    return authorEmail;
 }
 
 //facciamo l'export di contactAuthor
