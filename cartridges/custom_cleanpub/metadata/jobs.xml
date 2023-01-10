@@ -21,5 +21,15 @@
         </split>
         <rules/>
     </job>
-
+    <ObjectType>uploadAuthorProduct</ObjectType>
+    <ObjectAction>TwoTimesADayUpload</ObjectAction>
+    <Schedule>
+        <Frequency>daily</Frequency>
+        <StartTime>0:01 AM</StartTime>
+        <StartTime>4:00 AM</StartTime>
+        <StartTime>8:00 AM</StartTime>
+        <StartTime>0:01 PM</StartTime>
+        <StartTime>4:00 PM</StartTime>
+        <StartTime>8:00 PM</StartTime>
+    </Schedule>
 </jobs>
