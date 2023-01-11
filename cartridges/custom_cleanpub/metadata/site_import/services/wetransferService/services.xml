@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <services xmlns="http://www.demandware.com/xml/impex/services/2014-09-26">
-    <service-credential service-credential-id="WeTransfer_Credentials">
-        <url></url>
+    <service-credential service-credential-id="wetransfer.credentials">
+        <url>https://dev.wetransfer.com/v1/</url>
         <user-id></user-id>
-        <password></password>
+        <password>masked="true"</password>
     </service-credential>
 
-    <service-profile service-profile-id="WeTransfer_Profile">
+    <service-profile service-profile-id="wetransfer.profile">
         <timeout-millis>30000</timeout-millis>
         <cb-enabled>false</cb-enabled>
     </service-profile>
 
-    <service service-id="WeTransfer">
+    <service service-id="wetransfer.createLink">
         <service-type>HTTP</service-type>
         <enabled>true</enabled>
         <log-prefix>wetransfer_</log-prefix>
         <comm-log-enabled>true</comm-log-enabled>
         <mock-mode-enabled>false</mock-mode-enabled>
-        <profile-id>WeTransfer_Profile</profile-id>
-        <credential-id>WeTransfer_Credentials</credential-id>
+        <profile-id>wetransfer.profile</profile-id>
+        <credential-id>wetransfer.credentials</credential-id>
     </service>
 </services>
