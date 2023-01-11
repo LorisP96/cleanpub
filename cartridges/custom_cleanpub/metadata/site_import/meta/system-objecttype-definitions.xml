@@ -29,6 +29,13 @@
                 <externally-managed-flag>false</externally-managed-flag>
                 <default-value>0</default-value>
             </attribute-definition>
+              <attribute-definition attribute-id="mainSku">
+                <display-name xml:lang="x-default">mainSku</display-name>
+                <type>string</type>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>true</externally-managed-flag>
+                <default-value>0</default-value>
+            </attribute-definition>
             <group-definitions>
                 <attribute-group group-id="bookProduct">
                     <display-name xml:lang="x-default">bookProduct</display-name>
@@ -36,6 +43,7 @@
                         <attribute attribute-id="minimumPrice"/>
                         <attribute attribute-id="suggestedPrice"/>
                         <attribute attribute-id="fullfilment"/>
+                        <attribute attribute-id="mainSku"/>
                 </attribute-group>
         </group-definitions>
         </custom-attribute-definitions>
