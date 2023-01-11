@@ -17,12 +17,12 @@ function updateProductAuthor(product) {
             // line[sku, name, description, minimumPrice, suggestedPrice, fullfilment, mainSku]
                 owning_catalog_id: 'WapiCatalog',
                 sku: product[0],
-                mainSku: product[6],
                 name: product[1],
                 description: product[2],
                 minimumPrice: product[3],
                 suggestedPrice: product[4],
-                fullfilment: product[5]
+                fullfilment: product[5],
+                id: product[6] 
             };
             return JSON.stringify(req);
         },

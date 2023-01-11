@@ -17,38 +17,20 @@ function execute() {
         folderAuthor = folderAuthor.replace("/", "") // pulisce /authorId per avere solo id senza '/'
         var openedProductsFile = new File(File.IMPEX + PATH + folderAuthor + "/products.csv")
         if (openedProductsFile.exist()) {      
-
-            // var queryString = "custom.authorId LIKE '".concat(folderAuthor, "*'");
-            // var productsAuthor = SystemObjectMgr.querySystemObjects("bookProduct",queryString,null);
             
-            var csvFileReader = new CSVStreamReader(openedProductsFile)
+            var csvFileReader = new CSVStreamReader(openedProductsFile, ',', '"', 1)
+            var lineIterator = csvFileReader.readAll();
 
-            while (csvFileReader.hasNext()) {
+            while (lineIterator.hasNext()) {
 
-                var line = csvFileReader.next()
+                var line = lineIterator.next().Array()
                 var sku = line[0]
                 line.push(line[0] + "-" + folderAuthor)
-                UploadAuthorProductService.call(line)//non sono sicuro sia giusto
+                UploadAuthorProductService.call(line)
                 // line[sku, name, description, minimumPrice, suggestedPrice, fullfilment, mainSku]
-
-
-
-
-
-                // NON DOVREBBE SERVIRE PERCHè IL SERVIZIO NON FA DISTIZIONE SE DEVE CREARE O AGGIORNARE UN PRODOTTO
-                // if(sku in productsAuthor.sku){
-                   
-
-                // } else { //altrimenti crea un nuovo prodotto
-                //     // Dobbiamo andare a fare write di un file newProducts.xml 
-                   
-                // }
-
             }
 
             csvFileReader.close();
-
-            //va cancellato il file PATH + AUTHOR + /products.csv
             openedProductsFile.remove()
 
         }
