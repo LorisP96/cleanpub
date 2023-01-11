@@ -1,37 +1,23 @@
 "use strict";
 
-var CustomObjectMgr = require('dw/object/CustomObjectMgr');
-// var logger = require('dw/system/Logger').getLogger('Emailblink', 'subscribe');
-
 var CSVStreamReader = require('dw/io/CSVStreamReader');
 var File = require('dw/io/File');
+var SystemObjectMgr = require('dw.object.SystemObjectMgr');
 
 function execute() {
 
-
-    // DA FARE, sistemare come ciclare tra le cartelle. #################################
-    // NB non usare AUTHORID cicla dalle cartelle e prendi l'authorId per fare la query dalla stringa del path
     var PATH = "/import/products/"
-    var AUTHORID = 10001
     var FULL_PATH = File.getFullPath(File.IMPEX, PATH)
+    var authorsFolders = new File(FULL_PATH)
+    var listFolders = authorsFolders.list()
 
-    var AUTHORS_FOLDER_PATH = new File(FULL_PATH)
-    var listFolders = authorsFolders.listFiles(AUTHORS_FOLDER_PATH)
+    listFolders.forEach(folderAuthor => {
+        var openedProductsFile = new File(File.IMPEX + PATH + folderAuthor + "/products.csv")
+        if (openedProductsFile.exist()) {      
 
-    //Apriamo i files Update e initializeXML
-    var indexFolder = 0
-
-    while (listFolders[indexFolder + 1].exist()) { // DA FARE ciclare in modo pulito ###################
-
-        var openedProductsFile = new File(File.IMPEX + PATH + AUTHORID + "/products.csv")
-        if (openedProductsFile.exist()) {
-
-            // Querystring per ricevere l'iteratore con i libri per autore. 
-            var queryString = "custom.authorId LIKE'".concat(AUTHORID, "*'"); 
-            var bookProductIterator = CustomObjectMgr.queryCustomObjects('bookProduct', queryString, null); 
-
-            // i product sono dw.systemProduct  ################################
-            // bisogna cancellare i customObj BookProduct e usare i systemProduct.
+            var queryString = "custom.authorId LIKE '".concat(folderAuthor, "*'");
+            var productsAuthor = SystemObjectMgr.querySystemObjects("bookProduct",queryString,null);
+            
             var csvFileReader = new CSVStreamReader(openedProductsFile)
 
             while (csvFileReader.hasNext()) {
@@ -40,7 +26,7 @@ function execute() {
                 var sku = line[0]
 
                 // se c'è è un Update
-                if(sku in bookProductIterator.sku){
+                if(sku in productsAuthor.sku){
                     // Dobbiamo andare a fare write di un file productsUpdate.xml 
                     // Va assegnato per che autore
 
@@ -57,11 +43,8 @@ function execute() {
             openedProductsFile.remove()
 
         }
-
-        AUTHORID += 1
-        indexFolder ++
-    }
-
+        
+    });
     
 
 }
