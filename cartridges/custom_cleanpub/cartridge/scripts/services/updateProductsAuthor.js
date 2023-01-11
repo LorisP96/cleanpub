@@ -15,14 +15,51 @@ function updateProductAuthor(product) {
             svc.addHeader("Authorization","Bearer" + currentSite.getCustomPreferenceValue('client_id'));
             req = {
                 owning_catalog_id: 'WapiCatalog',
-                sku: porduct.sku,
-                name: product.name,
-                description: product.description,
-                minimumPrice: product.minimumPrice,
-                suggestedPrice: product.suggestedPrice,
-                fullfilment: product.fullfilment
+                sku: product[6],
+                name: product[1],
+                description: product[2],
+                minimumPrice: product[3],
+                suggestedPrice: product[4],
+                fullfilment: product[5]
             };
             return JSON.stringify(req);
         },
-    })
+        parseResponse: function(svc, client) {
+            var response = parseResponse(svc, client);
+            return response;
+        }
+    });
 }
+
+function isResponseJSON(client) {
+    var contentTypeHeader = client.getResponseHeader('Content-Type');
+    return(
+        contentTypeHeader &&
+        contentTypeHeader.split(';')[0].toLowerCase() === 'application/json'
+    );
+}
+
+function parseResponse(svc,client) {
+    var isJSON = isResponseJSON(client);
+    var isError = client.statusCode != 201;
+    var parsedBody;
+
+    if(isJSON) {
+        try {
+            parsedBody = JSON.parse(client.text);
+        } catch(e) {
+            parsedBody = client.text;
+        }
+    } else {
+        parsedBody = client.text;
+    }
+
+    return {
+        isValidJSON: isJSON,
+        isError: isError,
+        responseObj: parsedBody,
+        errorText: client.errorText,
+    };
+}
+
+module.exports = updateProductAuthor();
