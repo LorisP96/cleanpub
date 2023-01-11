@@ -10,7 +10,7 @@ function execute() {
     var FULL_PATH = File.getFullPath(File.IMPEX, PATH)
     var authorsFolders = new File(FULL_PATH)
     var listFolders = authorsFolders.list()
-    var UploadAuthorProductService = require('~/cartridge/scripts/services/uploadAuthorProduct') 
+    var UploadAuthorProductService = require('~/cartridge/scripts/services/productsService') 
 
     listFolders.forEach(folderAuthor => {
 
@@ -29,8 +29,11 @@ function execute() {
                 var sku = line[0]
                 line.push(line[0] + "-" + folderAuthor)
                 UploadAuthorProductService.call(line)//non sono sicuro sia giusto
-
                 // line[sku, name, description, minimumPrice, suggestedPrice, fullfilment, mainSku]
+
+
+
+
 
                 // NON DOVREBBE SERVIRE PERCHè IL SERVIZIO NON FA DISTIZIONE SE DEVE CREARE O AGGIORNARE UN PRODOTTO
                 // if(sku in productsAuthor.sku){

@@ -14,8 +14,10 @@ function updateProductAuthor(product) {
             svc.setRequestMethod('PUT');
             svc.addHeader("Authorization","Bearer" + currentSite.getCustomPreferenceValue('client_id'));
             req = {
+            // line[sku, name, description, minimumPrice, suggestedPrice, fullfilment, mainSku]
                 owning_catalog_id: 'WapiCatalog',
-                sku: product[6],
+                sku: product[0],
+                mainSku: product[6],
                 name: product[1],
                 description: product[2],
                 minimumPrice: product[3],
@@ -41,7 +43,7 @@ function isResponseJSON(client) {
 
 function parseResponse(svc,client) {
     var isJSON = isResponseJSON(client);
-    var isError = client.statusCode != 201;
+    var isError = client.statusCode != 201; //controlla che la chiamata sia andata a buon fine
     var parsedBody;
 
     if(isJSON) {
