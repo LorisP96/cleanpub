@@ -17,5 +17,13 @@ module.exports = function (object, product) {
         enumerable: true,
         value: product.fullfilment
     });
+    Object.defineProperty(object, 'mainSku', {
+        enumerable: true,
+        value: product.mainSku
+    });
+    Object.defineProperty(object, 'url', {
+        enumerable: true,
+        value: product.url
+    });
 };
 
