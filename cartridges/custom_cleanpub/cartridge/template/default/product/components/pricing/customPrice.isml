@@ -1,0 +1,21 @@
+<div class="container">
+    <div class='row'>
+        <div class="col">
+            <div class="price">
+                ${pdic.product.custom.minimumPrice}
+            </div>
+            <div class="label_below">
+                ${Resource.msg('label.price.minimumPrice','customProduct',null)}
+            </div>
+        </div>
+        <div class="col">
+            <div class="price">
+                ${pdic.product.custom.suggestedPrice}
+            </div>
+            <div class="label_below">
+                ${Resource.msg('label.price.suggestedPrice','customProduct',null)}
+            </div>
+        </div>
+    </div>
+    //TODO inputrange
+</div>

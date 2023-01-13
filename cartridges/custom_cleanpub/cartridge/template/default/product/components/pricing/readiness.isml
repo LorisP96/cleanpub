@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="col">
+        <div class='row'>
+            //TODO input range
+        </div>
+        <div class='row complete'>
+            ${Resource.msg('label.product.productReadiness','customProduct',pdict.custom.productReadiness)}
+        </div>
+        <div class="row label_below">
+            ${Resource.msg('label.product.lastUpdate','customProduct',pdict.custom.lastUpdate)}
+        </div>
+    </div>
+</div>

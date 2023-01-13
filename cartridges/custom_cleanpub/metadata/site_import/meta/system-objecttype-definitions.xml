@@ -10,21 +10,21 @@
             </attribute-definition>
                 <attribute-definition attribute-id="minimumPrice">
                 <display-name xml:lang="x-default">minimumPrice</display-name>
-                <type>decimal</type>
+                <type>number</type>
                 <mandatory-flag>true</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
                 <default-value>0</default-value>
             </attribute-definition>
                 <attribute-definition attribute-id="suggestedPrice">
                 <display-name xml:lang="x-default">suggestedPrice</display-name>
-                <type>decimal</type>
+                <type>number</type>
                 <mandatory-flag>true</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
                 <default-value>1</default-value>
             </attribute-definition>
             <attribute-definition attribute-id="fullfilment">
                 <display-name xml:lang="x-default">fullfilment</display-name>
-                <type>decimal</type>
+                <type>int</type>
                 <mandatory-flag>true</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
                 <default-value>0</default-value>
@@ -45,7 +45,7 @@
             </attribute-definition>
             <attribute-definition attribute-id="url">
                 <display-name xml:lang="x-default">url</display-name>
-                <type>url</type>
+                <type>string</type>
                 <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>true</externally-managed-flag>
                 <default-value>0</default-value>

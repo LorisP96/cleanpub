@@ -2,17 +2,23 @@
 
 var server = require('server');
 
-server.get('new', server.middleware.https, function (req, res, next) {
-    var URLUtils = require('dw/web/URLUtils');
+var cache = require('*/cartridge/scripts/middleware/cache')
+var consentTracking = require('*/cartridge/scripts/middleware/consentTracking')
+
+server.get('New', cache.applyPromotionSensitiveCache, consentTracking.consent, function (req, res, next) {
+    var URLUtils = require('dw/web/URLUtils')
+    var authorHelpers = require('*/cartridge/scripts/helpers/authorHelpers')
+    var authorId = req.querystring.authorId
     res.render('emailAuthor/emailAuthor.isml', {
-        actionUrl: URLUtils.url('emailAuthor').toString(),
-        authorId: req.querystring.authorId
+        actionUrl: URLUtils.url('emailAuthor','authorId',authorId).toString(),
+        authorName: authorHelpers.getName(authorId),
+        productName: req.querystring.name
     });
 
     next();
 });
 
-server.post('post', server.middleware.https, function (req, res, next) {
+server.post('EmailAuthor', cache.applyPromotionSensitiveCache, consentTracking.consent, function (req, res, next) {
     var Resource = require('dw/web/Resource');
     var hooksHelper = require('*/cartridge/scripts/helpers/hooks');
     var emailHelper = require('*/cartridge/scripts/helpers/emailHelpers');
